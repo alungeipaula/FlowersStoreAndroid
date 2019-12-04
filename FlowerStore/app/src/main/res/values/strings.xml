@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">FlowerStore</string>
+    <string name="check_it_out">Check it out</string>
+    <string name="shop_name">Bloom</string>
+    <string name="flower_name">Rose</string>
+    <string name="price">Price</string>
+    <string name="pieces">Pieces</string>
+</resources>
