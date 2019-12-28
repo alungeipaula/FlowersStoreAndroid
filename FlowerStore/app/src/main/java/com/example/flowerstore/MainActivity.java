@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // Initialize recycler view adapter with car list (data source)
+
         FlowerItemAdapter recyclerViewAdapter = new FlowerItemAdapter(flowerList);
 
         // Set recycler view adapter to recycler view

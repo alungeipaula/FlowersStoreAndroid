@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="favoriteImages">
+        <item>@drawable/favorite</item>
+        <item>@drawable/unfavorite</item>
+    </array>
+
+</resources>

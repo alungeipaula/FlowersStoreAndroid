@@ -1,6 +1,8 @@
 package com.example.flowerstore;
 
+import android.content.res.TypedArray;
 import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +16,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.FlowerViewHolder> {
 
     private final List<Flower> flowers;
+    private Map<Integer, Integer> favorite_map = new HashMap();
 
     public FlowerItemAdapter(List<Flower> flowers){
         this.flowers= flowers;
@@ -31,11 +36,32 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
         return new FlowerViewHolder(recyclerRow);
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull FlowerViewHolder holder, int position) {
-        Flower flower = flowers.get(position);
+        final Flower flower = flowers.get(position);
         holder.flowerName.setText(flower.getName());
         holder.priceValue.setText(flower.getPrice());
+
+        switch (flower.getName()){
+            case "Daisy": holder.flowerImage.setImageResource(R.drawable.daisy); break;
+            case "Rose": holder.flowerImage.setImageResource(R.drawable.rose); break;
+            case "Tulip": holder.flowerImage.setImageResource(R.drawable.tulip); break;
+            case "Lotus": holder.flowerImage.setImageResource(R.drawable.lotus); break;
+            default : holder.flowerImage.setImageResource(R.drawable.ic_launcher_background);
+        }
+
+
+        if (flower.isFavorite()){
+            holder.favorite.setImageResource(R.drawable.favorite);
+        }else{
+            holder.favorite.setImageResource((R.drawable.unfavorite));
+        }
+
+
+
+
        /* holder.piecesNumber.setAdapter(return new ArrayAdapter<Integer>(MainActivity.class,
                 android.R.layout.simple_spinner_dropdown_item,
                 flower.getPieces()));*/
@@ -49,7 +75,7 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
         return flowers.size();
     }
 
-    static class FlowerViewHolder extends RecyclerView.ViewHolder{
+    static class FlowerViewHolder extends RecyclerView.ViewHolder {
         final TextView flowerName;
         final ImageView flowerImage;
         final TextView price;
@@ -72,5 +98,8 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
             favorite = itemView.findViewById(R.id.favorite_image);
             addToCart = itemView.findViewById(R.id.add_to_cart);
         }
+
+
+
     }
 }

@@ -16,10 +16,10 @@ public class DataSource {
         piecesNumber.add(5);
         piecesNumber.add(6);
         piecesNumber.add(7);
-        flowerList.add(new Flower("Tulip", "4.0$", piecesNumber, R.drawable.tulip));
-        flowerList.add(new Flower("Rose", "5.0$", piecesNumber, R.drawable.rose));
-        flowerList.add(new Flower("Lotus", "10.0$", piecesNumber, R.drawable.lotus));
-        flowerList.add(new Flower("Daisy", "3.0$", piecesNumber, R.drawable.daisy));
+        flowerList.add(new Flower("Tulip", "4.0$", piecesNumber, R.drawable.tulip, false));
+        flowerList.add(new Flower("Rose", "5.0$", piecesNumber, R.drawable.rose, false));
+        flowerList.add(new Flower("Lotus", "10.0$", piecesNumber, R.drawable.lotus, false));
+        flowerList.add(new Flower("Daisy", "3.0$", piecesNumber, R.drawable.daisy, false));
         return flowerList;
     }
 

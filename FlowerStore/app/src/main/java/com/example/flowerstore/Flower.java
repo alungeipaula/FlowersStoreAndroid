@@ -8,12 +8,14 @@ public class Flower {
     private String price;
     private List<Integer> pieces;
     private int imageFlower;
+    private boolean favorite;
 
-    public Flower(String name, String price, List<Integer> pieces, int imageFlower) {
+    public Flower(String name, String price, List<Integer> pieces, int imageFlower, boolean favorite) {
         this.name = name;
         this.price = price;
         this.pieces = pieces;
         this.imageFlower = imageFlower;
+        this.favorite= favorite;
     }
 
     public String getName() {
@@ -46,6 +48,14 @@ public class Flower {
 
     public void setImageFlower(int imageFlower) {
         this.imageFlower = imageFlower;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     @Override
