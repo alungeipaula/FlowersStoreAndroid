@@ -5,4 +5,8 @@
         <item>@drawable/unfavorite</item>
     </array>
 
+    <string-array name="payment_method">
+        <item>Card Pay</item>
+    </string-array>
+
 </resources>

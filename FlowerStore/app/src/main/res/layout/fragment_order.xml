@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_order"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightBackground">
+
+    <TextView
+        android:id="@+id/intro_order_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/big_dimension"
+        android:text="@string/intro_order_text"/>
+
+    <TextView
+        android:id="@+id/sender_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/med_dimension"
+        android:textColor="@color/black"
+        android:text="Sender"/>
+
+    <EditText
+        android:id="@+id/name_sender_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/darkSilver"
+        android:hint="@string/name"
+        android:layout_margin="20dp"/>
+
+    <EditText
+        android:id="@+id/additional_message_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/additional_message"
+        android:layout_margin="20dp"/>
+
+    <Spinner
+        android:id="@+id/pay_method_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/payment_method"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:id="@+id/receiver_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/med_dimension"
+        android:textColor="@color/black"
+        android:text="Receiver"/>
+
+    <EditText
+        android:id="@+id/receiver_name_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name"
+        android:layout_margin="20dp"/>
+
+    <EditText
+        android:id="@+id/address_receiver_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/adress"
+        android:layout_margin="20dp"/>
+
+    <Button
+        android:id="@+id/confimation_order_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:layout_marginLeft="150dp"
+        android:text="@string/confirm"/>
+
+
+
+
+
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -16,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,9 +27,13 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
 
     private final List<Flower> flowers;
     private Map<Integer, Integer> favorite_map = new HashMap();
+    private FlowerViewHolder.ViewHolderListener viewHolderListener;
+    private String valueOfPieces;
 
-    public FlowerItemAdapter(List<Flower> flowers){
+    public FlowerItemAdapter(List<Flower> flowers, FlowerViewHolder.ViewHolderListener viewHolderListener){
         this.flowers= flowers;
+        this.viewHolderListener= viewHolderListener;
+
     }
     @NonNull
     @Override
@@ -41,6 +48,7 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
     @Override
     public void onBindViewHolder(@NonNull FlowerViewHolder holder, int position) {
         final Flower flower = flowers.get(position);
+        final ImageView imageFavorite = holder.favorite;
         holder.flowerName.setText(flower.getName());
         holder.priceValue.setText(flower.getPrice());
 
@@ -52,19 +60,41 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
             default : holder.flowerImage.setImageResource(R.drawable.ic_launcher_background);
         }
 
+        holder.favorite.setImageResource(R.drawable.unfavorite);
+        holder.favorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                viewHolderListener.onFavoriteButtonClicked(flower);
+                if (flower.isFavorite()){
+                    imageFavorite.setImageResource(R.drawable.favorite);
+                }else{
+                    imageFavorite.setImageResource(R.drawable.unfavorite);
+                }
+            }
+        });
 
-        if (flower.isFavorite()){
-            holder.favorite.setImageResource(R.drawable.favorite);
-        }else{
-            holder.favorite.setImageResource((R.drawable.unfavorite));
-        }
+        holder.piecesNumber.setAdapter(viewHolderListener.getSpinnerAdapter(flower.getPieces()));
+        holder.piecesNumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                   Object item=  parent.getItemAtPosition(position);
+                   valueOfPieces = String.valueOf(item);
+                Log.d("this", "onItemSelected: "+ valueOfPieces);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                   valueOfPieces = "1";
+            }
+        });
+        holder.addToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("this", "onItemSELECTED: "+ valueOfPieces);
+                viewHolderListener.onCartButtonClicked(flower, valueOfPieces);
 
-
-
-       /* holder.piecesNumber.setAdapter(return new ArrayAdapter<Integer>(MainActivity.class,
-                android.R.layout.simple_spinner_dropdown_item,
-                flower.getPieces()));*/
+            }
+        });
 
     }
 
@@ -84,6 +114,13 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
         final Spinner piecesNumber;
         final ImageView favorite;
         final ImageView addToCart;
+
+        public interface ViewHolderListener{
+            void onFavoriteButtonClicked(Flower flower);
+            void onCartButtonClicked(Flower flower,  String numberOfPieces);
+            ArrayAdapter<String> getSpinnerAdapter(List<String> numberOfPieces);
+
+        }
 
 
         public FlowerViewHolder(@NonNull View itemView) {

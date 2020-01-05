@@ -5,6 +5,7 @@
     <string name="flower_name">Rose</string>
     <string name="price">Price</string>
     <string name="pieces">Pieces</string>
+    <string name="email_address">customer.support@bloom.com</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -14,9 +15,14 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_slideshow">Cart</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_about_us">About us</string>
     <string name="menu_send">Send</string>
+    <string name="name">Name</string>
+    <string name="additional_message">Additional message</string>
+    <string name="intro_order_text">Order your products</string>
+    <string name="adress">Address</string>
+    <string name="confirm">Confirm</string>
 </resources>

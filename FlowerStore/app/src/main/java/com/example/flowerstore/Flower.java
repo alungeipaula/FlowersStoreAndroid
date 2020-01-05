@@ -6,16 +6,27 @@ public class Flower {
 
     private String name;
     private String price;
-    private List<Integer> pieces;
+    private List<String> pieces;
     private int imageFlower;
     private boolean favorite;
 
-    public Flower(String name, String price, List<Integer> pieces, int imageFlower, boolean favorite) {
+    public boolean isInCart() {
+        return inCart;
+    }
+
+    public void setInCart(boolean inCart) {
+        this.inCart = inCart;
+    }
+
+    private boolean inCart;
+
+    public Flower(String name, String price, List<String> pieces, int imageFlower, boolean favorite, boolean inCart) {
         this.name = name;
         this.price = price;
         this.pieces = pieces;
         this.imageFlower = imageFlower;
         this.favorite= favorite;
+        this.inCart= inCart;
     }
 
     public String getName() {
@@ -34,11 +45,11 @@ public class Flower {
         this.price = price;
     }
 
-    public List<Integer> getPieces() {
+    public List<String> getPieces() {
         return pieces;
     }
 
-    public void setPieces(List<Integer> pieces) {
+    public void setPieces(List<String> pieces) {
         this.pieces = pieces;
     }
 
@@ -57,6 +68,8 @@ public class Flower {
     public void setFavorite(boolean favorite) {
         this.favorite = favorite;
     }
+
+
 
     @Override
     public String toString(){
