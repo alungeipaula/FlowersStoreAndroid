@@ -1,3 +1,4 @@
+
 [
 {
 	"name":"Rose",
@@ -12,5 +13,19 @@
 	"favorite":false,
 	"inCart":false,
 	"description":"The flowers are usually large, showy and brightly colored, generally red, pink, yellow, or white (usually in warm colors). "
+},
+{
+	"name":"Lotus",
+	"price":"2.0",
+	"favorite":false,
+	"inCart":false,
+	"description":"Nelumbo nucifera, also known as Indian lotus, sacred lotus, bean of India, Egyptian bean or simply lotus, is one of two extant species of aquatic plant in the family Nelumbonaceae. "
+},
+{
+	"name":"Daisy",
+	"price":"4.0",
+	"favorite":false,
+	"inCart":false,
+	"description":"It is a perennial herbaceous plant with short creeping rhizomes and rosettes of small rounded or spoon-shaped leaves that are from 3/4 to 2 inches (approx. 2–5 cm) long and grow flat to the ground. "
 }
 ]
