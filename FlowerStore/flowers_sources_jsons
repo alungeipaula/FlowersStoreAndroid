@@ -2,15 +2,15 @@
 {
 	"name":"Rose",
 	"price":"4.0",
-	"favorite":"false",
-	"inCart":"false",
+	"favorite":false,
+	"inCart":false,
 	"description":"A rose is a woody perennial flowering plant of the genus Rosa, in the family Rosaceae, or the flower it bears. There are over three hundred species and thousands of cultivars."
 },
 {
 	"name":"Tulip",
 	"price":"5.0",
-	"favorite":"false",
-	"inCart":"false",
+	"favorite":false,
+	"inCart":false,
 	"description":"The flowers are usually large, showy and brightly colored, generally red, pink, yellow, or white (usually in warm colors). "
 }
 ]
