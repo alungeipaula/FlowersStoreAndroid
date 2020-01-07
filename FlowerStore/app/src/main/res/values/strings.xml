@@ -12,7 +12,7 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_profile">Settings</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_favorites">Favorites</string>
@@ -25,4 +25,17 @@
     <string name="intro_order_text">Order your products</string>
     <string name="adress">Address</string>
     <string name="confirm">Confirm</string>
+    <string name="description">Description</string>
+    <string name="description_value">Description value</string>
+    <string name="business_hours_tv">Monday: 8:30 AM - 9:00 PM\n Tuesday: 8:30 AM - 9:00 PM\n Wednesday: 8:30 AM - 9:00 PM\n Thursday: 8:30 AM - 9:00 PM\n Friday: 8:30 AM - 9:00 PM\n Saturday: 8:30 AM - 6:00 PM\n Sunday: Closed</string>
+    <string name="business_hours_label">Business hours</string>
+    <string name="address">Address</string>
+    <string name="address_value">Avram Iancu street, no 4,\n building A, floor 5\n Cluj-Napoca, Cluj</string>
+    <string name="tel_number">+40743886348</string>
+    <string name="contact_label">Contact</string>
+    <string name="web_site">Web site</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">Save</string>
 </resources>

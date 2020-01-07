@@ -21,7 +21,11 @@
         android:id="@+id/nav_cart"
         android:name="com.example.flowerstore.ui.slideshow.CartFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_nav_cart_to_nav_order"
+            app:destination="@id/nav_order" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_tools"
@@ -31,19 +35,45 @@
 
     <fragment
         android:id="@+id/nav_about_us"
-        android:name="com.example.flowerstore.ui.share.ShareFragment"
+        android:name="com.example.flowerstore.ui.share.AboutUsFragment"
         android:label="@string/menu_about_us"
-        tools:layout="@layout/fragment_about_us" />
+        tools:layout="@layout/fragment_about_us" >
+        <action
+            android:id="@+id/action_nav_about_us_to_nav_web"
+            app:destination="@id/nav_web" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_web"
+        android:name="com.example.flowerstore.ui.share.WebsiteFragment"
+        android:label="@string/web_site"
+        tools:layout="@layout/fragment_website" />
 
     <fragment
         android:id="@+id/nav_order"
         android:name="com.example.flowerstore.ui.send.OrderFragment"
         android:label="@string/menu_send"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_order">
+        <action
+            android:id="@+id/action_nav_order_to_nav_payment"
+            app:destination="@+id/nav_payment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_payment"
-        android:name="com.example.flowerstore.ui.home.HomeFragment"
+        android:name="com.example.flowerstore.ui.send.PaymentFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_payment" />
+        tools:layout="@layout/fragment_payment">
+        <action
+            android:id="@+id/action_nav_payment_to_nav_home"
+            app:destination="@id/nav_home"
+            app:launchSingleTop="true"
+            app:popUpTo="@+id/mobile_navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.flowerstore.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

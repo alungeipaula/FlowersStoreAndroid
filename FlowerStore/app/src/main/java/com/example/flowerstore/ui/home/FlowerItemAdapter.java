@@ -1,12 +1,9 @@
-package com.example.flowerstore;
+package com.example.flowerstore.ui.home;
 
-import android.content.res.TypedArray;
-import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -15,9 +12,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.example.flowerstore.R;
+import com.example.flowerstore.model.entity.Flower;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,13 +25,15 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
     private final List<Flower> flowers;
     private Map<Integer, Integer> favorite_map = new HashMap();
     private FlowerViewHolder.ViewHolderListener viewHolderListener;
-    private String valueOfPieces;
+    private Integer valueOfPieces;
 
-    public FlowerItemAdapter(List<Flower> flowers, FlowerViewHolder.ViewHolderListener viewHolderListener){
-        this.flowers= flowers;
-        this.viewHolderListener= viewHolderListener;
+    public FlowerItemAdapter(List<Flower> flowers, FlowerViewHolder.ViewHolderListener viewHolderListener) {
+        this.flowers = flowers;
+        this.viewHolderListener = viewHolderListener;
+
 
     }
+
     @NonNull
     @Override
     public FlowerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -44,20 +43,28 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
     }
 
 
-
     @Override
-    public void onBindViewHolder(@NonNull FlowerViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final FlowerViewHolder holder, int position) {
         final Flower flower = flowers.get(position);
         final ImageView imageFavorite = holder.favorite;
         holder.flowerName.setText(flower.getName());
-        holder.priceValue.setText(flower.getPrice());
+        holder.priceValue.setText(flower.getPrice().toString());
 
-        switch (flower.getName()){
-            case "Daisy": holder.flowerImage.setImageResource(R.drawable.daisy); break;
-            case "Rose": holder.flowerImage.setImageResource(R.drawable.rose); break;
-            case "Tulip": holder.flowerImage.setImageResource(R.drawable.tulip); break;
-            case "Lotus": holder.flowerImage.setImageResource(R.drawable.lotus); break;
-            default : holder.flowerImage.setImageResource(R.drawable.ic_launcher_background);
+        switch (flower.getName()) {
+            case "Daisy":
+                holder.flowerImage.setImageResource(R.drawable.daisy);
+                break;
+            case "Rose":
+                holder.flowerImage.setImageResource(R.drawable.rose);
+                break;
+            case "Tulip":
+                holder.flowerImage.setImageResource(R.drawable.tulip);
+                break;
+            case "Lotus":
+                holder.flowerImage.setImageResource(R.drawable.lotus);
+                break;
+            default:
+                holder.flowerImage.setImageResource(R.drawable.ic_launcher_background);
         }
 
         holder.favorite.setImageResource(R.drawable.unfavorite);
@@ -65,40 +72,36 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
             @Override
             public void onClick(View v) {
                 viewHolderListener.onFavoriteButtonClicked(flower);
-                if (flower.isFavorite()){
+                if (flower.isFavorite()) {
                     imageFavorite.setImageResource(R.drawable.favorite);
-                }else{
+                } else {
                     imageFavorite.setImageResource(R.drawable.unfavorite);
                 }
             }
         });
 
-        holder.piecesNumber.setAdapter(viewHolderListener.getSpinnerAdapter(flower.getPieces()));
-        holder.piecesNumber.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                   Object item=  parent.getItemAtPosition(position);
-                   valueOfPieces = String.valueOf(item);
-                Log.d("this", "onItemSelected: "+ valueOfPieces);
-            }
+        List<String> flowerCartQuantities = new ArrayList<String>();
+        for (Integer numberOfPieces : flower.getPieces()) {
+            flowerCartQuantities.add(numberOfPieces.toString());
+        }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                   valueOfPieces = "1";
-            }
-        });
+        holder.piecesNumber.setAdapter(
+                new ArrayAdapter<String>(
+                        ((HomeFragment) viewHolderListener).getActivity(),
+                        android.R.layout.simple_spinner_dropdown_item,
+                        flowerCartQuantities)
+        );
+
         holder.addToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("this", "onItemSELECTED: "+ valueOfPieces);
-                viewHolderListener.onCartButtonClicked(flower, valueOfPieces);
+                Integer pieces = Integer.parseInt((String) holder.piecesNumber.getSelectedItem());
+                Log.d("this", "onItemSELECTED: " + valueOfPieces);
+                viewHolderListener.onCartButtonClicked(flower, pieces);
 
             }
         });
-
     }
-
-
 
     @Override
     public int getItemCount() {
@@ -115,11 +118,10 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
         final ImageView favorite;
         final ImageView addToCart;
 
-        public interface ViewHolderListener{
+        public interface ViewHolderListener {
             void onFavoriteButtonClicked(Flower flower);
-            void onCartButtonClicked(Flower flower,  String numberOfPieces);
-            ArrayAdapter<String> getSpinnerAdapter(List<String> numberOfPieces);
 
+            void onCartButtonClicked(Flower flower, Integer numberOfPieces);
         }
 
 
@@ -135,8 +137,5 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
             favorite = itemView.findViewById(R.id.favorite_image);
             addToCart = itemView.findViewById(R.id.add_to_cart);
         }
-
-
-
     }
 }

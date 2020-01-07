@@ -10,25 +10,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 import com.example.flowerstore.R;
 
-import org.w3c.dom.Text;
-
-public class OrderFragment extends Fragment implements View.OnClickListener {
+public class OrderFragment extends Fragment {
 
     private TextView introOrder;
     private TextView senderTextView;
     private EditText nameSenderET;
     private Spinner payMethodSpinner;
     private EditText additionalMessageET;
-    private Text receiverTextView;
+    private TextView receiverTextView;
     private EditText receiverNameET;
     private EditText addressReceiverET;
     private Button confirmationOrderButton;
@@ -38,8 +34,13 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_order, container, false);
-        confirmationOrderButton = (Button)root.findViewById(R.id.confimation_order_button);
-        confirmationOrderButton.setOnClickListener(this);
+        confirmationOrderButton = (Button) root.findViewById(R.id.confimation_order_button);
+        confirmationOrderButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(OrderFragmentDirections.actionNavOrderToNavPayment());
+            }
+        });
 
         return root;
     }
@@ -61,23 +62,5 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    @Override
-    public void onClick(View v) {
-        Fragment fragment = null;
-        switch (v.getId()) {
-            case R.id.confimation_order_button:
-                fragment = new PaymentFragment();
-                replaceFragment(fragment);
-                break;
 
-        }
-    }
-
-    public void replaceFragment(Fragment newFragment) {
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_order, newFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-
-        }
 }

@@ -13,10 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import com.example.flowerstore.R;
 
-public class PaymentFragment extends Fragment implements View.OnClickListener{
+public class PaymentFragment extends Fragment {
 
     TextView introCard;
     EditText cardNumber;
@@ -42,27 +43,14 @@ public class PaymentFragment extends Fragment implements View.OnClickListener{
         expiryDate = view.findViewById(R.id.expiry_date);
         securityCode = view.findViewById(R.id.security_code);
         confirmationPaymentButton = view.findViewById(R.id.confirmation_payment_button);
-
+        confirmationPaymentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(PaymentFragmentDirections.actionNavPaymentToNavHome());
+            }
+        });
     }
 
-    @Override
-    public void onClick(View v) {
-        Fragment fragment = null;
-        switch (v.getId()) {
-            case R.id.confimation_order_button:
-                fragment = new PaymentFragment();
-                replaceFragment(fragment);
-                break;
 
-        }
-    }
-
-    public void replaceFragment(Fragment newFragment) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_order, newFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-
-    }
 }
 
