@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,8 +19,15 @@ import com.example.flowerstore.ui.FlowerStoreApp;
 
 public class ProfileFragment extends Fragment {
 
-    private EditText usernameEditText;
-    private Button saveButton;
+    private ImageView profilePictureIm;
+    private Button fragProfileSaveBt;
+    private TextView fragProfileUsernameLabelTv;
+    private EditText fragProfileusernameEt;
+    private TextView favoritePersonLabelTv;
+    private EditText favoriteNameEt;
+    private EditText favoriteAddressEt;
+
+
 
     //unde iti trebuie SharedPref (Fragment) copiezi asta :
     private SharedPreferenceProvider sharedPreferenceProvider;
@@ -47,36 +56,79 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         findViews(view);
-        String username = usernameEditText.getText().toString();
+
+        String username = fragProfileusernameEt.getText().toString();
         sharedPreferenceProvider.saveUsername(username);
-        loadSharedPreferences();
+        loadSharedPreferencesUserName();
+
+        String favoritePersonName = favoriteNameEt.getText().toString();
+        sharedPreferenceProvider.saveFavoritePersonName(favoritePersonName);
+        loadSharedPreferencesFavoritePersonName();
+
+
+        String  favoritePersonAddress = favoriteAddressEt.getText().toString();
+        sharedPreferenceProvider.saveFavoritePersonAddress(favoritePersonAddress);
+        loadSharedPreferencesFavoritePersonAddress();
         setEvents();
 
     }
 
     private void findViews(View v) {
-        usernameEditText = v.findViewById(R.id.frag_profile_username_et);
-        saveButton = v.findViewById(R.id.frag_profile_save_bt);
+        profilePictureIm = v.findViewById(R.id.profile_picture);
+        fragProfileUsernameLabelTv = v.findViewById(R.id.frag_profile_username_label);
+        fragProfileusernameEt = v.findViewById(R.id.frag_profile_username_et);
+        favoritePersonLabelTv = v.findViewById(R.id.favorite_person_label_tv);
+        favoriteNameEt = v.findViewById(R.id.favorite_name_tv);
+        favoriteAddressEt = v.findViewById(R.id.favorite_address_tv);
+        fragProfileSaveBt = v.findViewById(R.id.frag_profile_save_bt);
+
+        fragProfileSaveBt = v.findViewById(R.id.frag_profile_save_bt);
     } // si dupaia
 
     private void setEvents() {
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        fragProfileSaveBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saveSharedPreferences();
+                saveSharedPreferencesUsername();
+                saveSharedPreferencesFavoritePersonName();
+                saveSharedPreferencesFavoritePersonAddress();
             }
         });
     }
 
-    private void loadSharedPreferences() {
+    //username
+    private void loadSharedPreferencesUserName() {
         String username = sharedPreferenceProvider.loadUsername(); // AICI e un Load
-        usernameEditText.setText(username);
+        fragProfileusernameEt.setText(username);
     }
 
-    private void saveSharedPreferences() {
-        String username = usernameEditText.getText().toString();
+    private void saveSharedPreferencesUsername() {
+        String username = fragProfileusernameEt.getText().toString();
         sharedPreferenceProvider.saveUsername(username); // AICI e un Save
     }
+
+    //favorite person name
+    private void loadSharedPreferencesFavoritePersonName(){
+        String favoritePersonName =  sharedPreferenceProvider.loadFavoritePersonName();
+        favoriteNameEt.setText(favoritePersonName);
+    }
+
+    private void saveSharedPreferencesFavoritePersonName() {
+        String favoritePersonName = favoriteNameEt.getText().toString();
+        sharedPreferenceProvider.saveFavoritePersonName(favoritePersonName); // AICI e un Save
+    }
+
+    //favorite address name
+    private void loadSharedPreferencesFavoritePersonAddress(){
+        String favoritePersonAddress =  sharedPreferenceProvider.loadFavoritePersonAddress();
+        favoriteAddressEt.setText(favoritePersonAddress);
+    }
+
+    private void saveSharedPreferencesFavoritePersonAddress() {
+        String favoritePersonAddress = favoriteAddressEt.getText().toString();
+        sharedPreferenceProvider.saveFavoritePersonAddress(favoritePersonAddress); // AICI e un Save
+    }
+
 
     //Tot ce scrii in SharedPrefProvider o sa fie vizibil oriunde poti obtine contextu aplicatiei.
 }

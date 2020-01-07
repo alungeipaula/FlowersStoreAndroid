@@ -16,7 +16,8 @@
         <activity
             android:name=".ui.NavigationActivity"
             android:label="@string/title_activity_navigation"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan"></activity>
         <!-- <activity android:name=".model.datasource.RetrofitActivity" />-->
         <!-- <activity android:name=".NavigationActivity"
              android:label="@string/title_activity_navigation"
