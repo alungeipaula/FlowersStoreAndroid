@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -63,6 +64,7 @@ public class HomeFragment extends Fragment implements FlowerItemAdapter.FlowerVi
     @Override
     public void onFavoriteButtonClicked(Flower flower) {
         ((FlowerStoreApp)getActivity().getApplication()).getDataSource().changeFavoriteStatus(flower);
+        Toast.makeText(getActivity(), "The flower is added to Favorites", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -71,6 +73,7 @@ public class HomeFragment extends Fragment implements FlowerItemAdapter.FlowerVi
         Log.d("this", "flower: " + flower.getName());
 
         ((FlowerStoreApp)getActivity().getApplication()).getDataSource().addToCart(flower, numberOfPieces);
+        Toast.makeText(getActivity(), "The flower is added to Cart", Toast.LENGTH_SHORT).show();
 
     }
 }

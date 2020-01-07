@@ -68,7 +68,7 @@
         android:id="@+id/confimation_order_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/round_shaped_button"
         android:layout_marginLeft="150dp"
         android:text="@string/confirm"/>
 

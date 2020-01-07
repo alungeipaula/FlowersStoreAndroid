@@ -46,7 +46,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.CartIt
 
         holder.flowerNameTv.setText(flower.getName());
         holder.noPiecesCartUtemTv.setText("x" + piecesNumber);
-        holder.priceProductCartItemTv.setText(flower.getPrice().toString());
+        holder.priceProductCartItemTv.setText(flower.getPrice().toString()+"$");
 
         Double totalSumItem = piecesNumber * flower.getPrice();
         holder.totalProductCartItemTv.setText(totalSumItem + "$");

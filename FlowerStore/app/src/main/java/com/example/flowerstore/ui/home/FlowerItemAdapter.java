@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -98,6 +99,7 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
                 Integer pieces = Integer.parseInt((String) holder.piecesNumber.getSelectedItem());
                 Log.d("this", "onItemSELECTED: " + valueOfPieces);
                 viewHolderListener.onCartButtonClicked(flower, pieces);
+
 
             }
         });

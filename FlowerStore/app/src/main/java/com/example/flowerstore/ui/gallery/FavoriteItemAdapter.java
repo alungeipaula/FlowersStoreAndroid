@@ -43,6 +43,7 @@ public class FavoriteItemAdapter extends RecyclerView.Adapter<FavoriteItemAdapte
     @Override
     public void onBindViewHolder(@NonNull final FavoriteItemAdapter.FavoriteViewHolder holder, int position) {
         final Flower flower = favoriteFlowerList.get(position);
+        holder.flowerFavoriteNameTv.setText(flower.getName());
         switch (flower.getName()) {
             case "Daisy":
                 holder.flowerImageFavoriteIV.setImageResource(R.drawable.daisy);
