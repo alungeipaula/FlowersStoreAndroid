@@ -27,5 +27,26 @@
 	"favorite":false,
 	"inCart":false,
 	"description":"It is a perennial herbaceous plant with short creeping rhizomes and rosettes of small rounded or spoon-shaped leaves that are from 3/4 to 2 inches (approx. 2–5 cm) long and grow flat to the ground. "
+},
+{
+	"name":"Anemone",
+	"price":"8.0",
+	"favorite":false,
+	"inCart":false,
+	"description":"The Anemone includes 120 species of flowers, but the most common types found in North America come in white, pink or violet hues. The Anemone is dainty and doesn't grow well during summer droughts, overly wet winters or high winds."
+},
+{
+	"name":"Begonia",
+	"price":"2.0",
+	"favorite":false,
+	"inCart":false,
+	"description":"Known for their attractive blooms, the Begonia is a timeless favorite among gardeners. Consisting of more than 1,700 specie, Begonias also make for good indoor plants if kept by a sunny window and watered regularly."
+},
+{
+	"name":"Marigold",
+	"price":"9.0",
+	"favorite":false,
+	"inCart":false,
+	"description":"Marigolds are an easy easy way to add rich color to your garden. Aromatic and inviting to butterflies and hummingbirds, the Marigold comes primarily in shades of red, orange and yellow. Bring inside and arrange to make a beautiful golden bouquet."
 }
 ]
