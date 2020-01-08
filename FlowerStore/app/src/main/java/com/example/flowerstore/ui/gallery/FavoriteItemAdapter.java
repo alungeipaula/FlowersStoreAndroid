@@ -49,13 +49,22 @@ public class FavoriteItemAdapter extends RecyclerView.Adapter<FavoriteItemAdapte
                 holder.flowerImageFavoriteIV.setImageResource(R.drawable.daisy);
                 break;
             case "Rose":
-                holder.flowerImageFavoriteIV.setImageResource(R.drawable.rose);
+                holder.flowerImageFavoriteIV.setImageResource(R.drawable.rose_transparent);
                 break;
             case "Tulip":
                 holder.flowerImageFavoriteIV.setImageResource(R.drawable.tulip);
                 break;
             case "Lotus":
                 holder.flowerImageFavoriteIV.setImageResource(R.drawable.lotus);
+                break;
+            case "Begonia":
+                holder.flowerImageFavoriteIV.setImageResource(R.drawable.begonia);
+                break;
+            case "Anemone":
+                holder.flowerImageFavoriteIV.setImageResource(R.drawable.anemone);
+                break;
+            case "Marigold":
+                holder.flowerImageFavoriteIV.setImageResource(R.drawable.marigold);
                 break;
             default:
                 holder.flowerImageFavoriteIV.setImageResource(R.drawable.ic_launcher_background);

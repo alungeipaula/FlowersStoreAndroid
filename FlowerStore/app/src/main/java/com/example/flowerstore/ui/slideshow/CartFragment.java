@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -60,7 +61,7 @@ public class CartFragment extends Fragment implements CartItemAdapter.CartItemRe
         // Initialize recycler view adapter with flower list (data source)
 
         total_products_value_tv = view.findViewById(R.id.total_products_value_tv);
-        Double cartTotal = ((FlowerStoreApp)getActivity().getApplication()).getDataSource().getCartTotal();
+        final Double cartTotal = ((FlowerStoreApp)getActivity().getApplication()).getDataSource().getCartTotal();
         total_products_value_tv.setText(cartTotal.toString());
 
         total_products_tv = view.findViewById(R.id.total_products_tv);
@@ -69,7 +70,12 @@ public class CartFragment extends Fragment implements CartItemAdapter.CartItemRe
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(CartFragmentDirections.actionNavCartToNavOrder());
+                if (cartTotal == 0) {
+                    Toast.makeText(getContext(), "The cart is empty!", Toast.LENGTH_SHORT).show();
+                }else{
+                    Navigation.findNavController(view).navigate(CartFragmentDirections.actionNavCartToNavOrder());
+                }
+
             }
         });
 

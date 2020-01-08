@@ -7,6 +7,7 @@
 
     <string-array name="payment_method">
         <item>Card Pay</item>
+        <item>Cash on delivery</item>
     </string-array>
 
 </resources>

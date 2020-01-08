@@ -49,20 +49,29 @@ public class FlowerItemAdapter extends RecyclerView.Adapter<FlowerItemAdapter.Fl
         final Flower flower = flowers.get(position);
         final ImageView imageFavorite = holder.favorite;
         holder.flowerName.setText(flower.getName());
-        holder.priceValue.setText(flower.getPrice().toString());
+        holder.priceValue.setText(flower.getPrice().toString()+" $");
 
         switch (flower.getName()) {
             case "Daisy":
                 holder.flowerImage.setImageResource(R.drawable.daisy);
                 break;
             case "Rose":
-                holder.flowerImage.setImageResource(R.drawable.rose);
+                holder.flowerImage.setImageResource(R.drawable.rose_transparent);
                 break;
             case "Tulip":
                 holder.flowerImage.setImageResource(R.drawable.tulip);
                 break;
             case "Lotus":
                 holder.flowerImage.setImageResource(R.drawable.lotus);
+                break;
+            case "Begonia":
+                holder.flowerImage.setImageResource(R.drawable.begonia);
+                break;
+            case "Anemone":
+                holder.flowerImage.setImageResource(R.drawable.anemone);
+                break;
+            case "Marigold":
+                holder.flowerImage.setImageResource(R.drawable.marigold);
                 break;
             default:
                 holder.flowerImage.setImageResource(R.drawable.ic_launcher_background);

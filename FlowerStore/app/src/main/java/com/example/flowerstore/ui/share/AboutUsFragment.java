@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -30,6 +31,8 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
     private TextView telNumberTv;
     private TextView emailAddressTv;
     private TextView webSite;
+    private TextView rateUsTv;
+    private RatingBar ratingUsRb;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,7 +59,8 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
         addressValueTv = layout.findViewById(R.id.address_value_tv);
         contactLabelTv = layout.findViewById(R.id.contact_label_tv);
         emailAddressTv = layout.findViewById(R.id.email_adress_tv);
-
+        rateUsTv = layout.findViewById(R.id.rate_us_tv);
+        ratingUsRb = layout.findViewById(R.id.rate_us_rb);
 
     }
 
@@ -76,6 +80,8 @@ public class AboutUsFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.web_site_tv:
                 Navigation.findNavController(v).navigate(AboutUsFragmentDirections.actionNavAboutUsToNavWeb());
+            case R.id.rate_us_rb:
+
         }
     }
 }

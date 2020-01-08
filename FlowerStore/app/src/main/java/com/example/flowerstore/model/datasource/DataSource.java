@@ -99,4 +99,8 @@ public class DataSource {
     public void removeFavoriteEntry(Flower flower) {
         favourites.remove(flower);
     }
+
+    public void clearCart() {
+        cartContent.clear();
+    }
 }
